@@ -78,11 +78,12 @@ export default function Form() {
                 onChange={handleChange}
                 name="inspiredFrom"
             >
-                <option value="Indian">Indian</option>
-                <option value="Mexican">Mexican</option>
-                <option value="Japanese">Japanese</option>
-                <option value="Thai">Thai</option>
-                <option value="American">American</option>
+                <option value="indian">Indian</option>
+                <option value="mexican">Mexican</option>
+                <option value="japanese">Japanese</option>
+                <option value="thai">Thai</option>
+                <option value="korean">Korean</option>
+                <option value="american">American</option>
             </select>
             <button>Submit</button>
         </form>
