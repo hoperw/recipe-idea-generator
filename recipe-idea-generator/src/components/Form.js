@@ -1,17 +1,65 @@
 import { useState } from 'react';
+import recipeData from '../recipeData';
 
 export default function Form() {
 
-    const [formData, setFormData] = useState(
-        {flavorProfile: "", 
-        omnivore: true, vegan: false, vegetarian: false, glutenFree: false, 
-        inspiredFrom: ""}
-    )
+    const [formData, setFormData] = useState({
+        flavorProfile: "savory", 
+        vegan: false, vegetarian: false, glutenFree: false, 
+        inspiredFrom: "indian"
+    })
 
+    const [recipe, setRecipe] = useState({
+        name: "",
+        url: "",
+        image: ""
+    });
+
+    function getRecipe() {
+        const allRecipes = recipeData.data.recipes
+        let recipeArray = allRecipes.filter(recipe => {
+
+            return recipe.flavorProfile.includes(formData.flavorProfile) 
+                   && recipe.inspiredFrom.includes(formData.inspiredFrom)
+        })
+        if(formData.vegetarian) {
+            recipeArray = recipeArray.filter(recipe => {
+
+                return recipe.vegetarian
+            })
+        }
+        if(formData.vegan) {
+            recipeArray = recipeArray.filter(recipe => {
+
+                return recipe.vegan
+            })
+        }
+        if(formData.glutenFree) {
+            recipeArray = recipeArray.filter(recipe => {
+
+                return recipe.glutenFree
+            })
+        }
+
+        const randomNumber = Math.floor(Math.random() * recipeArray.length)
+
+        if (recipeArray.length > 0) {
+            const url = recipeArray[randomNumber].url
+            const name = recipeArray[randomNumber].name
+            setRecipe({
+                name: name,
+                url: url,
+                image: ""
+            })
+        } else {
+            console.log("wat")
+        }
+    }
 
     function handleChange(event) {
         const {name, value, type, checked} = event.target
         setFormData(prevFormData => {
+
             return {
                 ...prevFormData,
                 [name]: type === "checkbox" ? checked : value
@@ -21,20 +69,12 @@ export default function Form() {
 
     function handleSubmit(event) {
         event.preventDefault()
-        console.log(formData)
     }
 
 
     return (
+        <div>
         <form onSubmit={handleSubmit}>
-            <label htmlFor="dietaryRestriction">Omnivore: </label>
-            <input type="checkbox" 
-                type="checkbox"
-                id="dietaryRestriction"
-                checked={formData.omnivore}
-                onChange={handleChange}
-                name="omnivore"
-            />
             <label htmlFor="dietaryRestriction">Vegan: </label>
             <input type="checkbox" 
                 type="checkbox"
@@ -85,7 +125,12 @@ export default function Form() {
                 <option value="korean">Korean</option>
                 <option value="american">American</option>
             </select>
-            <button>Submit</button>
+            <button onClick={getRecipe}>Submit</button>
         </form>
+        <div id="recipe-display">
+            <h2>{recipe.name}</h2>
+            <a href={recipe.url}>Recipe</a>
+        </div>
+        </div>
     )
 }
