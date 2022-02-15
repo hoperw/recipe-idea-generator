@@ -74,31 +74,36 @@ export default function Form() {
 
     return (
         <div>
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="dietaryRestriction">Vegan: </label>
-            <input type="checkbox" 
-                type="checkbox"
-                id="dietaryRestriction"
-                checked={formData.vegan}
-                onChange={handleChange}
-                name="vegan"               
-            />
-            <label htmlFor="dietaryRestriction">Vegetarian: </label>
-            <input type="checkbox" 
-                type="checkbox"
-                id="dietaryRestriction"
-                checked={formData.vegetarian}
-                onChange={handleChange}
-                name="vegetarian"               
-            />
-            <label htmlFor="dietaryRestriction">Gluten Free: </label>
-            <input type="checkbox" 
-                type="checkbox"
-                id="dietaryRestriction"
-                checked={formData.glutenFree}  
-                onChange={handleChange}
-                name="glutenFree"              
-            />
+        <form id="recipe-form" onSubmit={handleSubmit}>
+            <div className="checkbox-container">
+                <label htmlFor="dietaryRestriction">Vegan: </label>
+                <input 
+                    className="checkbox-item"
+                    type="checkbox"
+                    id="vegan"
+                    checked={formData.vegan}
+                    onChange={handleChange}
+                    name="vegan"               
+                />
+                <label htmlFor="dietaryRestriction">Vegetarian: </label>
+                <input 
+                    className="checkbox-item"
+                    type="checkbox"
+                    id="vegetarian"
+                    checked={formData.vegetarian}
+                    onChange={handleChange}
+                    name="vegetarian"               
+                />
+                <label htmlFor="dietaryRestriction">Gluten Free: </label>
+                <input 
+                    className="checkbox-item" 
+                    type="checkbox"
+                    id="glutenFree"
+                    checked={formData.glutenFree}  
+                    onChange={handleChange}
+                    name="glutenFree"              
+                />
+            </div>
             <label htmlFor="flavorProfile">Flavor Profile: </label>
             <select
                 id="flavorProfile"
@@ -125,11 +130,11 @@ export default function Form() {
                 <option value="korean">Korean</option>
                 <option value="american">American</option>
             </select>
-            <button onClick={getRecipe}>Submit</button>
+            <button id="form-submit" onClick={getRecipe}>Submit</button>
         </form>
         <div id="recipe-display">
-            <h2>{recipe.name}</h2>
-            <a href={recipe.url}>Recipe</a>
+            <h2 id="recipe-name">{recipe.name}</h2>
+            <a id="recipe-link" href={recipe.url}>Recipe</a>
         </div>
         </div>
     )
