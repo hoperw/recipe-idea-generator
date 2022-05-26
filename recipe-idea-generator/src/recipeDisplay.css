@@ -1,0 +1,19 @@
+#recipe-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+    padding: 1em;
+}
+#recipe-name {
+    text-align: center;
+}
+
+#recipe-link {
+    text-align: center;
+    margin: .5em;
+}
+#recipe-img {
+    height: 100%;
+    border-radius: 5px; 
+}

@@ -10,7 +10,8 @@ export default {
                 "vegetarian": true,
                 "glutenFree": false,
                 "flavorProfile": ["savory"],
-                "inspiredFrom": ["indian"]
+                "inspiredFrom": ["indian"],
+                "img": "https://minimalistbaker.com/wp-content/uploads/2018/10/Vegan-Palak-Paneer-SQUARE-300x300.jpg"
             },
             {
                 "id": 2,
@@ -20,7 +21,8 @@ export default {
                 "vegetarian": false,
                 "glutenFree": true,
                 "flavorProfile": ["salty"],
-                "inspiredFrom": ["thai"]
+                "inspiredFrom": ["thai"],
+                "img": "https://minimalistbaker.com/wp-content/uploads/2021/11/Salmon-Green-Curry-SQUARE-300x300.jpg"
             },
             {
                 "id": 3,
@@ -30,7 +32,8 @@ export default {
                 "vegetarian": true,
                 "glutenFree": true,
                 "flavorProfile": ["sweet"],
-                "inspiredFrom": ["korean"]
+                "inspiredFrom": ["korean"],
+                "img": "https://minimalistbaker.com/wp-content/uploads/2019/05/Bibimbap-SQUARE-300x300.jpg"
             },
         ]
     }
